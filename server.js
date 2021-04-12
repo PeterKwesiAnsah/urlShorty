@@ -13,11 +13,23 @@ const app = express();
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
+	context: ({ req }) => {
+		const hostname = req.protocol + '://' + req.get('host');
+		return { hostname };
+	},
 });
+
+
+
+// app.use(handleRouting);
+//this is it
+
+//if y
 
 app.get('/', (req, res) => {
 	res.redirect('/graphql');
 	res.end();
+	//handle reverything here
 });
 
 (async () => {
