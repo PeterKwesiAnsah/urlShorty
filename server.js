@@ -3,11 +3,15 @@ import Server from 'apollo-server-express';
 import typeDefs from './typeDefs.js';
 import resolvers from './resolvers.js';
 import { sequelize } from './db/index.js';
+import handleRouting from './middlewares/handleRouting.js';
 
 const { ApolloServer } = Server;
 
 //express app
 const app = express();
+
+//init middlewares
+app.use(handleRouting);
 
 //apolloServer
 const server = new ApolloServer({
@@ -18,13 +22,6 @@ const server = new ApolloServer({
 		return { hostname };
 	},
 });
-
-
-
-// app.use(handleRouting);
-//this is it
-
-//if y
 
 app.get('/', (req, res) => {
 	res.redirect('/graphql');
