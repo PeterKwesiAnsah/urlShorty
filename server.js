@@ -14,11 +14,15 @@ const server = new ApolloServer({
 	resolvers,
 });
 
+app.get('/', (req, res) => {
+	res.redirect('/graphql');
+	res.end();
+});
+
 (async () => {
 	await server.start();
 	server.applyMiddleware({ app });
-
-	await app.listen({ port: process.env.port || 4000 });
+	app.listen({ port: process.env.port || 4000 });
 	console.log(
 		'Graphql server running at http://localhost:4000' + server.graphqlPath
 	);
