@@ -1,25 +1,36 @@
 {
-  "name": "urlshorty",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "apollo-server": "^2.22.2",
-    "apollo-server-express": "^2.22.2",
-    "express": "^4.17.1",
-    "graphql": "^15.5.0",
-    "nanoid": "^3.1.22",
-    "pg": "^8.5.1",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^6.6.2"
-  }
+	"name": "urlshorty",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest -- resolvers.test.js",
+		"dev": "nodemon index.js",
+		"start": "node index.js"
+	},
+	"jest": {
+		"transform": {
+			".js": "jest-esm-transformer"
+		}
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"apollo-server": "^2.22.2",
+		"apollo-server-express": "^2.22.2",
+		"apollo-server-testing": "^2.23.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"graphql": "^15.5.0",
+		"jest-esm-transformer": "^1.0.0",
+		"nanoid": "^3.1.22",
+		"pg": "^8.5.1",
+		"pg-hstore": "^2.3.3",
+		"sequelize": "^6.6.2"
+	},
+	"devDependencies": {
+		"jest": "^26.6.3"
+	}
 }

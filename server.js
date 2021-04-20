@@ -4,6 +4,7 @@ import typeDefs from './typeDefs.js';
 import resolvers from './resolvers.js';
 import { sequelize } from './db/index.js';
 import handleRouting from './middlewares/handleRouting.js';
+import urlModel from './db/models/Url.js';
 
 const { ApolloServer } = Server;
 
@@ -13,14 +14,16 @@ const app = express();
 //init middlewares
 app.use(handleRouting);
 
+
 //apolloServer
-const server = new ApolloServer({
+ const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context: ({ req }) => {
 		const hostname = req.protocol + '://' + req.get('host');
 		return { hostname };
 	},
+	dataSources: () => ({ urlModel }),
 });
 
 app.get('/', (req, res) => {
@@ -29,7 +32,7 @@ app.get('/', (req, res) => {
 	//handle reverything here
 });
 
-(async () => {
+const initServer = async () => {
 	await server.start();
 	server.applyMiddleware({ app });
 	app.listen({ port: process.env.port || 4000 });
@@ -42,4 +45,6 @@ app.get('/', (req, res) => {
 	console.log(
 		'Graphql server running at http://localhost:4000' + server.graphqlPath
 	);
-})();
+};
+
+export default initServer;

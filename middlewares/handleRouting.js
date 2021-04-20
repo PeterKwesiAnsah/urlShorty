@@ -4,9 +4,9 @@ const handleRouting = async (req, res, next) => {
 	if (req.originalUrl === '/graphql' || req.originalUrl === '/') {
 		next();
 	} else {
-		//check code again
-		const shortener = req.originalUrl.split('/');
-		console.log(shortener);
+		//get shortener
+		const shortener = req.originalUrl.split('/')[1];
+		
 		const urlObject = await UrlModel.findOne({ where: { shortener } });
 		if (urlObject) {
 			//get original url

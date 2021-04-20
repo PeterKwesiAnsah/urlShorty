@@ -1,5 +1,4 @@
-import graphql from 'apollo-server';
-const { gql } = graphql;
+import { gql } from 'apollo-server';
 
 const types = gql`
 	type Query {
