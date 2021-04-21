@@ -21,7 +21,11 @@ const server = new ApolloServer({
 	introspection: true,
 	playground: true,
 	context: ({ req }) => {
-		const hostname = req.protocol + '://' + req.get('host');
+		let protocol = 'http';
+		if (process.env.NODE_ENV === 'production') {
+			protocol = 'https';
+		}
+		const hostname = protocol + '://' + req.get('host');
 		return { hostname };
 	},
 	dataSources: () => ({ urlModel }),
@@ -37,7 +41,6 @@ const initServer = async () => {
 	await server.start();
 	server.applyMiddleware({ app });
 	app.listen({ port: process.env.PORT || 4000 });
-
 };
 
 export default initServer;
