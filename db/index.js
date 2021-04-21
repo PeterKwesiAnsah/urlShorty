@@ -2,12 +2,12 @@ import sql from 'sequelize';
 import PG from 'pg';
 
 const { Sequelize, DataTypes } = sql;
-const client = new PG.Client('postgres://postgres:Engine1234@localhost:5432');
+// const client = new PG.Client('postgres://postgres:Engine1234@localhost:5432');
 
-export const initdb = (async () => {
-	await client.connect();
-	await client.query('CREATE SCHEMA IF NOT EXISTS URLDB');
-})();
+// export const initdb = (async () => {
+// 	await client.connect();
+// 	await client.query('CREATE SCHEMA IF NOT EXISTS URLDB');
+// })();
 
 // const client = new pg.Connection(
 // 	'postgres://postgres:Engine1234@localhost:5432'
