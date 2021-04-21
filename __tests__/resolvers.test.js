@@ -28,7 +28,7 @@ describe('resolvers for valid URLS', () => {
 });
 
 describe('resolver for INVALID URLS', () => {
-	it('payload should be null for invalid URLS', async () => {
+	it('payload shortenURL should be null for invalid URLS', async () => {
 		const INVALID_URL =
 			'https://apollographql/docs/apollo-server/testing/testing/#createtestclient';
 		const payload = await executeQuery(INVALID_URL);

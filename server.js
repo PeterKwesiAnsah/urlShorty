@@ -19,6 +19,7 @@ app.use(handleRouting);
  const server = new ApolloServer({
 	typeDefs,
 	resolvers,
+	introspection:true,
 	context: ({ req }) => {
 		const hostname = req.protocol + '://' + req.get('host');
 		return { hostname };
