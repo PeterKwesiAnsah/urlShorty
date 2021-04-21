@@ -14,12 +14,12 @@ const app = express();
 //init middlewares
 app.use(handleRouting);
 
-
 //apolloServer
- const server = new ApolloServer({
+const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	introspection:true,
+	introspection: true,
+	playground: true,
 	context: ({ req }) => {
 		const hostname = req.protocol + '://' + req.get('host');
 		return { hostname };
