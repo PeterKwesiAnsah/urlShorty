@@ -36,16 +36,8 @@ app.get('/', (req, res) => {
 const initServer = async () => {
 	await server.start();
 	server.applyMiddleware({ app });
-	app.listen({ port: process.env.port || 4000 });
-	try {
-		await sequelize.authenticate();
-		console.log('connection sucessfully');
-	} catch (e) {
-		console.log(e);
-	}
-	console.log(
-		'Graphql server running at http://localhost:4000' + server.graphqlPath
-	);
+	app.listen({ port: process.env.PORT || 4000 });
+
 };
 
 export default initServer;
